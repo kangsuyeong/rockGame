@@ -30,29 +30,29 @@ const choice = {
 function App() {
   const [user, setUser] = useState(choice["default"]);
   const [computer, setComputer] = useState(choice["default"]);
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState("GAME START");
 
   const random = () => {
     let itemArray = Object.keys(choice);
     let num = Math.floor(Math.random() * (itemArray.length - 1));
-    setComputer(choice[itemArray[num]]);
+    return choice[itemArray[num]];
   };
 
   const judgment = (user, com) => {
     if (user.name === com.name) {
-      return setResult("tie");
+      return "tie";
     } else if (user.name === "Scissors")
-      return com.name === "Rock" ? setResult("lose") : setResult("win");
-    else if (user.name === "Rock")
-      return com.name === "Paper" ? setResult("lose") : setResult("win");
+      return com.name === "Rock" ? "lose" : "win";
+    else if (user.name === "Rock") return com.name === "Paper" ? "lose" : "win";
     else if (user.name === "Paper")
-      return com.name === "Scissors" ? setResult("lose") : setResult("win");
+      return com.name === "Scissors" ? "lose" : "win";
   };
 
   const play = (item) => {
     setUser(choice[item]);
-    random();
-    judgment(user, computer);
+    let computerChoice = random();
+    setComputer(computerChoice);
+    setResult(judgment(choice[item], computerChoice));
     console.log("result", result);
   };
 

@@ -1,11 +1,13 @@
 .box {
-  border: 1px solid red;
+  border: 5px solid black;
   width: 500px;
   height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  margin: 0px 10px;
 }
 .mainContainer {
   display: flex;
@@ -19,4 +21,18 @@
 .imgSize {
   width: 300px;
   height: 300px;
+}
+
+.win {
+  border-color: green;
+  color: green;
+}
+
+.lose {
+  border-color: red;
+  color: red;
+}
+.tie {
+  border-color: black;
+  color: black;
 }
